@@ -1,24 +1,15 @@
-# README
+# ZapServer
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* This is the server side of Zap, a project of Group H for 2017 CSC 510 Software Engineering course.
 
-Things you may want to cover:
+### Documentation for API use:
 
-* Ruby version
+*user register:
 
-* System dependencies
 
-* Configuration
+*user log in:
 
-* Database creation
 
-* Database initialization
+*user log out:
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
