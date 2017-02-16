@@ -1,4 +1,4 @@
-class MagiclinksController < ApplicationController
+class Api::V1::MagiclinksController < ApplicationController
 
 	  #Magic link implementation
   def magiclink
