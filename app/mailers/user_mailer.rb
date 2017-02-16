@@ -3,7 +3,7 @@ class UserMailer < ApplicationMailer
 
   def new_session(user)
     @user = user
-    logger.debug user.email
+    # logger.debug user.email
     mail to: user.email, subject: "Your Magic Link to Log In"
   end
 end
