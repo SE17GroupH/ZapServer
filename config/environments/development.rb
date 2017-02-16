@@ -8,16 +8,33 @@ Rails.application.configure do
 
   config.action_mailer.preview_path = "#{Rails.root}/spec/mailers/previews"
 
-    config.action_mailer.delivery_method = :smtp
-  # SMTP settings for gmail
-  config.action_mailer.smtp_settings = {
-  :address              => "smtp.gmail.com",
-  :port                 => 587,
-  :user_name            => ENV[MAIL_USER],
-  :password             => ENV[MAIL_PASSWORD],
-  :authentication       => "plain",
-  :enable_starttls_auto => true
-  }
+  #   config.action_mailer.delivery_method = :smtp
+  # # SMTP settings for gmail
+  # config.action_mailer.smtp_settings = {
+  # :address              => "smtp.gmail.com",
+  # :port                 => 587,
+  # :user_name            => ENV[MAIL_USER],
+  # :password             => ENV[MAIL_PASSWORD],
+  # :authentication       => "plain",
+  # :enable_starttls_auto => true
+  # }
+
+
+
+config.action_mailer.delivery_method = :smtp  
+config.action_mailer.perform_deliveries = true  
+config.action_mailer.raise_delivery_errors = true  
+config.action_mailer.default :charset => "utf-8"  
+config.action_mailer.smtp_settings = {  
+  address: "smtp.gmail.com",
+  port: 587,
+  domain: "mail.google.com",
+  authentication: "plain",
+  enable_starttls_auto: true,
+  user_name: 'zapse17@gmail.com',
+  password: '12345678'
+}
+
 
   # Do not eager load code on boot.
   config.eager_load = false
