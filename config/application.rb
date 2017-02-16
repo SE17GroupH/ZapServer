@@ -5,6 +5,10 @@ require 'rails/all'
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
+Dotenv::Railtie.load
+
+MAIL_USER = 'zapse17@gmail.com'
+MAIL_PASSWORD = 'chenyujia930223'
 
 module ZapServer
   class Application < Rails::Application
