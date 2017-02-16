@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 		# add resources here
 		resources :users, :only => [:show, :create, :update, :destroy]
 		resources :sessions, :only => [:create, :destroy]
+		resources :magiclinks, :only =>[:create]
 		end
 
 
