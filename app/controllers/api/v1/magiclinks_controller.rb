@@ -1,7 +1,7 @@
 class Api::V1::MagiclinksController < ApplicationController
 
 	  #Magic link implementation
-  def magiclink
+  def create
     user_email = params[:session][:email]
     user = user_email.present? && User.find_by(email: user_email)
     if user 
