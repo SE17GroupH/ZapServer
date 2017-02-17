@@ -4,9 +4,9 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Hi <%= @user.auth_token %></h1>
+    <h1>Hi <%= @user.email %></h1>
     <p>
-      Sample mail sent using smtp.
+      <a href="zapserver.herokuapp.com/magiclinks/<%= @user.auth_token%>">Click this link to log in</a>
     </p>
   </body>
 </html>
