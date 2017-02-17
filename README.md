@@ -72,4 +72,14 @@ cURL example:
 curl -k -v -H "Content-Type:application/json" -X POST -d '{"magiclink":{"email":"example@zapserver.com"}}' https://zapserver.herokuapp.com/api/magiclinks/
 
 
+* Verify user's auth_token
+METHOD: POST
 
+Api location: https://zapserver.herokuapp.com/api/check_auth_tokens
+
+Content-Type: application/json
+
+Accept: application/vnd.zapserver.v1
+
+cURL exmaple:
+curl -k -v -H "Content-Type:application/json" -X POST -d '{"authorization":{"email":"example@zapserver.com","auth_token":"_xxBCxyscYqefVrRqrkT"}}' https://zapserver.herokuapp.com/api/check_auth_tokens/
