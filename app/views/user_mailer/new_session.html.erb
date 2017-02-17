@@ -6,7 +6,7 @@
   <body>
     <h1>Hi <%= @user.email %></h1>
     <p>
-      <a href="zapserver.herokuapp.com/magiclinks/<%= @user.auth_token%>">Click this link to log in</a>
+      <a href="zapserver.herokuapp.com/magiclinks/auth_token=<%= @user.auth_token%>">Click this link to log in</a>
     </p>
   </body>
 </html>
