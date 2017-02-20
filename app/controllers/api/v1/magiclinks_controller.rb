@@ -4,9 +4,9 @@ class Api::V1::MagiclinksController < ApplicationController
   def create
     user_email = params[:magiclink][:email]
     user = user_email.present? && User.find_by(email: user_email)
-    if user 
+    if user
       UserMailer.new_session(user).deliver_now
-      # render json: user, status: 200, location: [:api, user]
+      render json: {"Message": "Magic Link Sent"}, status: 200
     else
       render json: { errors: "No accounts found!" }, status: 422
     end
