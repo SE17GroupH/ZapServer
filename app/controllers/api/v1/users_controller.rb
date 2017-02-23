@@ -1,3 +1,6 @@
+require 'net/http'
+require "rubygems"
+require "json"
 class Api::V1::UsersController < ApplicationController
   before_action :authenticate_with_token!, only: [:update, :destroy]
 	respond_to :json
@@ -29,10 +32,31 @@ class Api::V1::UsersController < ApplicationController
     head 204
   end
 
+  def enrollment(email)
+    uri = URI('https://westus.api.cognitive.microsoft.com/spid/v1.0/verificationProfiles')
+    uri.query = URI.encode_www_form({
+      })
+    request = Net::HTTP::Post.new(uri.request_uri)
+    # Request headers
+    request['Content-Type'] = 'application/json'
+    # Request headers
+    request['Ocp-Apim-Subscription-Key'] = '{a64d481d50294e91b2b227ea2b3f0e10}'
+    # Request body
+    request.body = "{body}"
+
+    response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
+      http.request(request)
+    end
+    puts response.body
+    parsed = JSON.parse(response.body)
+    identificationProfileId = parsed["identificationProfileId"]
+  end
+
+
   	private
 
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation)
+      params.require(:user).permit(:email, :password, :password_confirmation, :identificationProfileId)
     end
 
 end
