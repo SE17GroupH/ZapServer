@@ -6,7 +6,10 @@ class Api::V1::UsersController < ApplicationController
 	respond_to :json
 
 	def show
-		respond_with User.find(params[:id])
+    @user = User.find(params[:id])
+		respond_with @user.email
+    # user = User.find(params[:id])
+    # render json: { email: user.email}, status: 201, location: [:api, user]
 	end
 
 	def create
@@ -32,31 +35,31 @@ class Api::V1::UsersController < ApplicationController
     head 204
   end
 
-  def enrollment(email)
-    uri = URI('https://westus.api.cognitive.microsoft.com/spid/v1.0/verificationProfiles')
-    uri.query = URI.encode_www_form({
-      })
-    request = Net::HTTP::Post.new(uri.request_uri)
-    # Request headers
-    request['Content-Type'] = 'application/json'
-    # Request headers
-    request['Ocp-Apim-Subscription-Key'] = '{a64d481d50294e91b2b227ea2b3f0e10}'
-    # Request body
-    request.body = "{body}"
+  # def enrollment(email)
+  #   uri = URI('https://westus.api.cognitive.microsoft.com/spid/v1.0/verificationProfiles')
+  #   uri.query = URI.encode_www_form({
+  #     })
+  #   request = Net::HTTP::Post.new(uri.request_uri)
+  #   # Request headers
+  #   request['Content-Type'] = 'application/json'
+  #   # Request headers
+  #   request['Ocp-Apim-Subscription-Key'] = '{a64d481d50294e91b2b227ea2b3f0e10}'
+  #   # Request body
+  #   request.body = "{body}"
 
-    response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
-      http.request(request)
-    end
-    puts response.body
-    parsed = JSON.parse(response.body)
-    identificationProfileId = parsed["identificationProfileId"]
-  end
+  #   response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
+  #     http.request(request)
+  #   end
+  #   puts response.body
+  #   parsed = JSON.parse(response.body)
+  #   identificationProfileId = parsed["identificationProfileId"]
+  # end
 
 
   	private
 
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation, :identificationProfileId)
+      params.require(:user).permit(:email, :password, :password_confirmation)
     end
 
 end
