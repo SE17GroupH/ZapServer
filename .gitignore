@@ -19,3 +19,7 @@
 
 # Ignore Byebug command history file.
 .byebug_history
+
+# ignore sqlite local database files for development or test
+ZapServer_development
+ZapServer_test
